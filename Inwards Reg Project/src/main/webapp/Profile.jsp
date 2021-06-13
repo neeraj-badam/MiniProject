@@ -48,7 +48,7 @@
 		String generate = "";
 			if(s.equals("admin"))
 			{
-				generate = "<li><a href='Report.jsp'>PrintReport</a></li>"+"<li><a href='GenerateReport.jsp'>GenerateReport</a></li>";
+				generate = "<li><a href='Report.jsp'>PrintReport</a></li>"+"<li><a href='Company.jsp'>GenerateReport</a></li>";
 			}
 			else
 			{

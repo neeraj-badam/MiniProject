@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		        HttpSession session=request.getSession();  
 		        session.setAttribute("username",username);  
 		        response.setHeader("Location", "Profile.jsp");
-    			response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT); 
+    			response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
 				pw.println("<h6 class='text-white'>Login Succesfully done</h6>");
 				request.getRequestDispatcher("Profile.jsp").include(request, response);
 			}

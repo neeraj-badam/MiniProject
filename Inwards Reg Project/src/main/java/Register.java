@@ -24,6 +24,8 @@ public class Register extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		try {
+			
+			String companyCode = request.getParameter("companyCode");
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
 			
@@ -35,13 +37,9 @@ public class Register extends HttpServlet {
 			cnt++;
 		}
 		cnt++;
-		String str;
-		if(cnt < 10)
-		 	str = "CVR/CED/CW/2021/HPC/0"+cnt;
-		else
-			str = "CVR/CED/CW/2021/HPC/"+cnt;
-		PreparedStatement st = con.prepareStatement("insert into register(ref,date,date1,grade,con,cubes,date2,seven,twenty,villa,remarks) values(?,?,?,?,?,?,?,?,?,?,?)");
-		
+		String str = request.getParameter("reference");
+		System.out.println(str);
+		PreparedStatement st = con.prepareStatement("insert into register(ref,date,date1,grade,con,cubes,date2,seven,twenty,villa,remarks,companyName,companyAddress,companyLocation,InvestigatorName,InvestigatorDesignation) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		String date = request.getParameter("date");
 		String date1 = request.getParameter("date1");
 		String grade = request.getParameter("grade");
@@ -52,6 +50,11 @@ public class Register extends HttpServlet {
 		String Seven = request.getParameter("Seven");
 		String twentyEight = request.getParameter("twentyEight");
 		String villa = request.getParameter("villa");
+		String companyName = request.getParameter("companyName");
+		String companyAddress = request.getParameter("companyAddress");
+		String companyLocation = request.getParameter("companyLocation");
+		String investigatorName = request.getParameter("investigatorName");
+		String investigatorDesignation = request.getParameter("investigatorDesignation");
 		String remarks="";
 		try {
 			remarks = request.getParameter("remarks");
@@ -83,13 +86,20 @@ public class Register extends HttpServlet {
 		st.setString(9,twentyEight);
 		st.setString(10,villa);
 		st.setString(11,remarks);
-		st.execute();		
+		st.setString(12,companyName);
+		st.setString(13,companyAddress);
+		st.setString(14,companyLocation);
+		st.setString(15,investigatorName);
+		st.setString(16,investigatorDesignation);
+		st.execute();
+		System.out.println("Execution done");
 		
 		request.getRequestDispatcher("ValidateServlet").include(request, response);
 		}
 		
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			pw.println("Invalid Details");
 			request.getRequestDispatcher("GenerateReport.jsp").forward(request, response);
 		}

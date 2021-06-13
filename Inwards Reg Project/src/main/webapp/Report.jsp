@@ -13,7 +13,7 @@
 		}
 	</style>
 </head>
-<body>
+<body onload="display()">
 	<%
 	HttpSession httpsession=request.getSession(false);  
 	if(httpsession == null)
@@ -77,5 +77,13 @@
 		</div>
 		</form>
 	</div>
+	
+	<script type="text/javascript">
+		function display()
+		{
+			alert("Enter reference id or date");
+		}
+	</script>
+	
 </body>
 </html>

@@ -11,10 +11,25 @@
         .col-2,.col-6{
             margin-top: 5px;
         }
+        .dontDisplay
+        {
+        	visibility : hidden;
+        	height : 0px;
+        	width : 0px;
+        }
         
     </style> 
 </head>
 <body onload="Dates()">
+	<%
+		String companyName = request.getParameter("companyName");
+		String companyAddress = request.getParameter("companyAddress");
+		String companyLocation = request.getParameter("companyLocation");
+		String investigatorName = request.getParameter("investigatorName");
+		String investigatorDesignation = request.getParameter("investigatorDesignation");
+		String companyCode = request.getParameter("companyCode");
+	%>
+	
 	<div class="container">
         <form action="Register" onsubmit="return Fun()">
         <div class="row">
@@ -64,9 +79,9 @@
 			//int cnt=0;
 			String str;
 			if(cnt < 10)
-			 	str = "CVR/CED/CW/2021/HPC/0"+cnt;
+			 	str = "CVR/CED/CW/2021/"+companyCode+"/0"+cnt;
 			else
-				str = "CVR/CED/CW/2021/HPC/"+cnt;
+				str = "CVR/CED/CW/2021/"+companyCode+"/"+cnt;
 		%>
         <div class="row">
             <div class="col-lg-6" id="Reference" name="Reference">
@@ -78,13 +93,25 @@
                 </center>
             </div>
             <div class="col-lg-12">
-                <b>M/s. Haris Pranava Constructions Pvt. Ltd.,</b>
+                <b> <%= companyName %>, </b>
             </div>
             <div class="col-lg-12">
-                Affluence Villas, Manneguda,
+            	<div class="dontDisplay">
+	            	<input type="text" name="companyName" value='<%=companyName %>'>
+            		<input type="text" name="companyAddress" value='<%=companyAddress %>'>
+            		<input type="text" name="companyLocation" value='<%=companyLocation %>'>
+            		<input type="text" name="investigatorName" value='<%=investigatorName %>'>
+            		<input type="text" name="investigatorDesignation" value='<%=investigatorDesignation %>'>
+            		<input type="text" name="investigatorDesignation" value='<%=companyCode %>'>
+            		<input type="text" name="reference" value='<%=str %>'>
+            	</div>
+                <%= companyAddress %>,
             </div>
             <div class="col-lg-12">
-                Hyderabad.
+            	<div class="dontDisplay">
+            		<input type="text" name="companyName" value='<%=companyLocation %>'>
+            	</div>
+                <%= companyLocation %>.
             </div>
             <div class="col-lg-12" align="center" style="font-size: 20px;">
                 <u><b>INWARD REGISTER FOR CONCRETE CUBES</b></u>

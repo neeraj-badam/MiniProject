@@ -95,6 +95,12 @@
 		String villa = (String) h.getAttribute("villa");
 		String remarks = (String) h.getAttribute("remarks");
 		String uname = (String)h.getAttribute("username");
+		String companyName = (String)h.getAttribute("companyName");
+		String companyAddress = (String)h.getAttribute("companyAddress");
+		String companyLocation = (String)h.getAttribute("companyLocation");
+		String investigatorName = (String)h.getAttribute("investigatorName");
+		String investigatorDesignation = (String)h.getAttribute("investigatorDesignation");
+		
 		h.invalidate();
 		HttpSession httpsession=request.getSession();
 		httpsession.setAttribute("username", uname);
@@ -111,9 +117,9 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div>
-		<b>M/s. Haris Pranava Constructions Pvt. Ltd.,</b>
-		<p>Affluence Villas, Manneguda,</p>
-		<p>Hyderabad.</p>
+		<b><%= companyName %>,</b>
+		<p><%= companyAddress %>,</p>
+		<p><%= companyLocation%>.</p>
 	</div>
 	<div>
 		<center>
@@ -158,8 +164,8 @@
 	<br><br>
 	<br><p>
 		
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mr.M Vamsi<br>
-			Principal Investigator
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= investigatorName %><br>
+			<%= investigatorDesignation %>
 		
 	</p><br>
 	<hr>
@@ -196,9 +202,9 @@
 	</div>
 	<div style="clear: both;"></div>
 	<div>
-		<b>M/s. Haris Pranava Constructions Pvt. Ltd.,</b>
-		<p>Affluence Villas, Manneguda,</p>
-		<p>Hyderabad.</p>
+		<b><%= companyName %>,</b>
+		<p><%= companyAddress %>,</p>
+		<p><%= companyLocation%>.</p>
 	</div>
 	<div>
 		<center>
@@ -243,8 +249,8 @@
 	<br><br>
 	<br><p>
 		
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mr.M Vamsi<br>
-			Principal Investigator
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= investigatorName %><br>
+			<%= investigatorDesignation %>
 		
 	</p><br>
 	<input type="button" id="btnprint" value="Print this Page" onclick="print_page()" />
